@@ -101,8 +101,41 @@
   }
 
   /* ---------- CATALOG ---------- */
+  .catalog-toggle{
+    display:flex;gap:8px;margin-bottom:20px;
+  }
+  .toggle-btn{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;
+    padding:8px 14px;
+    border:2px solid var(--ink);
+    background:var(--cream);
+    cursor:pointer;
+  }
+  .toggle-btn.active{background:var(--ink);color:var(--cream);}
+  .toggle-btn:not(.active):hover{background:var(--paper-edge);}
+
   .albums{display:grid;grid-template-columns:1fr;gap:20px;}
-  @media(min-width:680px){.albums{grid-template-columns:1fr 1fr;}}
+  @media(min-width:680px){.albums.mode-grid{grid-template-columns:1fr 1fr;}}
+
+  .albums.mode-scroll{
+    display:flex;
+    grid-template-columns:none;
+    overflow-x:auto;
+    overflow-y:hidden;
+    scroll-snap-type:x mandatory;
+    gap:18px;
+    padding-bottom:14px;
+    -webkit-overflow-scrolling:touch;
+  }
+  .albums.mode-scroll .album-card{
+    flex:0 0 260px;
+    scroll-snap-align:start;
+  }
+  .albums.mode-scroll::-webkit-scrollbar{height:8px;}
+  .albums.mode-scroll::-webkit-scrollbar-track{background:var(--paper-edge);}
+  .albums.mode-scroll::-webkit-scrollbar-thumb{background:var(--ink);}
+
   .album-card{
     background:var(--cream);
     border:3px solid var(--ink);
@@ -206,7 +239,11 @@
 
     <section id="catalog">
       <h2><span class="num">01</span> Catalog</h2>
-      <div class="albums">
+      <div class="catalog-toggle" role="group" aria-label="Catalog display mode">
+        <button type="button" class="toggle-btn active" data-mode="grid" onclick="setCatalogMode('grid')">Grid</button>
+        <button type="button" class="toggle-btn" data-mode="scroll" onclick="setCatalogMode('scroll')">Scroll</button>
+      </div>
+      <div class="albums mode-grid" id="albumsWrap">
 
         <div class="album-card">
           <h3>neurovescent</h3>
@@ -280,6 +317,19 @@
       &copy; fwourck / epiclyclad. All rights reserved.
     </footer>
   </div>
+
+  <script>
+    function setCatalogMode(mode){
+      var wrap = document.getElementById('albumsWrap');
+      var buttons = document.querySelectorAll('.toggle-btn');
+      wrap.classList.remove('mode-grid','mode-scroll');
+      wrap.classList.add('mode-' + mode);
+      buttons.forEach(function(btn){
+        btn.classList.toggle('active', btn.getAttribute('data-mode') === mode);
+      });
+      if(mode === 'scroll'){ wrap.scrollLeft = 0; }
+    }
+  </script>
 
 </body>
 </html>
