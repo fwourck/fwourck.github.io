@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>fwourck</title>
+<meta name="description" content="fwourck — music is the only passport that matters. House, techno, jazz, blues. Independent label: epiclyclad.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Special+Elite&family=Archivo:wght@400;600;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#f4efe2;
+    --ink:#111111;
+    --pink:#ff2fb0;
+    --yellow:#ffd400;
+    --paper-edge:#dcd5c2;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Archivo',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  .wrap{max-width:920px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:72px 0 40px;
+    border-bottom:3px solid var(--ink);
+  }
+  .wordmark{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px 10px;
+    margin:0 0 18px;
+    line-height:1;
+  }
+  .wordmark span{
+    display:inline-block;
+    font-size:clamp(48px,13vw,108px);
+    padding:2px 10px;
+    background:var(--ink);
+    color:var(--cream);
+  }
+  .wordmark span:nth-child(1){font-family:'Bebas Neue',sans-serif;transform:rotate(-3deg);background:var(--ink);color:var(--cream);}
+  .wordmark span:nth-child(2){font-family:'Special Elite',monospace;transform:rotate(2deg);background:var(--pink);color:var(--ink);font-size:clamp(40px,11vw,90px);}
+  .wordmark span:nth-child(3){font-family:'Bebas Neue',sans-serif;transform:rotate(-1deg);background:var(--yellow);color:var(--ink);}
+  .wordmark span:nth-child(4){font-family:'Special Elite',monospace;transform:rotate(3deg);background:var(--cream);color:var(--ink);border:3px solid var(--ink);}
+  .wordmark span:nth-child(5){font-family:'Bebas Neue',sans-serif;transform:rotate(-2deg);background:var(--ink);color:var(--cream);}
+  .wordmark span:nth-child(6){font-family:'Special Elite',monospace;transform:rotate(1deg);background:var(--pink);color:var(--cream);font-size:clamp(40px,11vw,90px);}
+  .wordmark span:nth-child(7){font-family:'Bebas Neue',sans-serif;transform:rotate(-3deg);background:var(--yellow);color:var(--ink);}
+
+  .tagline{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:15px;
+    letter-spacing:0.02em;
+    color:var(--ink);
+    margin:0 0 20px;
+  }
+  .tagline::before{content:"// ";color:var(--pink);}
+  .label-credit{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    color:#555;
+    margin:0 0 26px;
+  }
+
+  .tags{display:flex;flex-wrap:wrap;gap:8px;}
+  .tag{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    padding:6px 10px;
+    border:2px solid var(--ink);
+    background:var(--cream);
+  }
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:48px 0;border-bottom:2px solid var(--ink);}
+  section:last-of-type{border-bottom:none;}
+  h2{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(28px,5vw,40px);
+    letter-spacing:0.02em;
+    margin:0 0 24px;
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+  }
+  h2 .num{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:14px;
+    color:var(--pink);
+    font-weight:600;
+  }
+
+  /* ---------- CATALOG ---------- */
+  .albums{display:grid;grid-template-columns:1fr;gap:20px;}
+  @media(min-width:680px){.albums{grid-template-columns:1fr 1fr;}}
+  .album-card{
+    background:var(--cream);
+    border:3px solid var(--ink);
+    padding:22px;
+    position:relative;
+    box-shadow:6px 6px 0 var(--ink);
+  }
+  .album-card h3{
+    font-family:'Special Elite',monospace;
+    font-size:26px;
+    margin:0 0 4px;
+  }
+  .album-card .track-count{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    color:#555;
+    margin:0 0 14px;
+  }
+  .tracklist{
+    list-style:none;padding:0;margin:0 0 18px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+  }
+  .tracklist li{
+    padding:6px 0;
+    border-bottom:1px dashed var(--paper-edge);
+    display:flex;gap:10px;
+  }
+  .tracklist li:last-child{border-bottom:none;}
+  .tracklist .idx{color:var(--pink);font-weight:600;}
+  .listen-row{display:flex;gap:10px;flex-wrap:wrap;}
+  .btn{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    font-weight:600;
+    text-decoration:none;
+    padding:9px 14px;
+    border:2px solid var(--ink);
+    background:var(--ink);
+    color:var(--cream);
+    transition:transform .12s ease;
+  }
+  .btn:hover{transform:translate(-2px,-2px);box-shadow:3px 3px 0 var(--ink);}
+  .btn.alt{background:var(--cream);color:var(--ink);}
+
+  /* ---------- PRESS ---------- */
+  .press-box{
+    display:flex;flex-wrap:wrap;align-items:center;gap:18px;justify-content:space-between;
+    border:3px solid var(--ink);
+    padding:22px;
+    background:var(--yellow);
+  }
+  .press-box p{
+    font-family:'Archivo',sans-serif;
+    font-size:14px;
+    margin:0;
+    max-width:520px;
+  }
+
+  /* ---------- CONNECT ---------- */
+  .connect-grid{
+    display:flex;flex-wrap:wrap;gap:12px;
+  }
+  .connect-grid a{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+    padding:8px 12px;
+    border:2px solid var(--ink);
+  }
+  .connect-grid a:hover{background:var(--ink);color:var(--cream);}
+  .email-line{
+    margin-top:20px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+  }
+  footer{
+    padding:24px 0 60px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    color:#777;
+  }
+</style>
+</head>
+<body>
+
+  <div class="wrap">
+    <div class="hero">
+      <h1 class="wordmark" aria-label="fwourck">
+        <span>f</span><span>w</span><span>o</span><span>u</span><span>r</span><span>c</span><span>k</span>
+      </h1>
+      <p class="tagline">music is the only passport that matters</p>
+      <p class="label-credit">independent label: epiclyclad</p>
+      <div class="tags">
+        <span class="tag">House</span>
+        <span class="tag">Techno</span>
+        <span class="tag">Jazz Fusion</span>
+        <span class="tag">Blues / Gospel-inflected</span>
+        <span class="tag">Orchestral / Marching Band</span>
+      </div>
+    </div>
+
+    <section id="catalog">
+      <h2><span class="num">01</span> Catalog</h2>
+      <div class="albums">
+
+        <div class="album-card">
+          <h3>neurovescent</h3>
+          <p class="track-count">3 tracks</p>
+          <ul class="tracklist">
+            <li><span class="idx">01</span> ThatFunkyShit</li>
+            <li><span class="idx">02</span> awtdbs</li>
+            <li><span class="idx">03</span> Motion City (Slidenomics)</li>
+          </ul>
+          <div class="listen-row">
+            <a class="btn" href="https://open.spotify.com/album/0VynuIN5l8ozNGRAvi8Tg0" target="_blank" rel="noopener">Spotify</a>
+            <a class="btn alt" href="https://music.apple.com/us/album/neurovescent-single/6790708219" target="_blank" rel="noopener">Apple Music</a>
+          </div>
+        </div>
+
+        <div class="album-card">
+          <h3>BlueCayman</h3>
+          <p class="track-count">4 tracks</p>
+          <ul class="tracklist">
+            <li><span class="idx">01</span> SSPIR</li>
+            <li><span class="idx">02</span> RLUIR</li>
+            <li><span class="idx">03</span> MBDDT</li>
+            <li><span class="idx">04</span> DDSSR</li>
+          </ul>
+          <div class="listen-row">
+            <a class="btn" href="https://open.spotify.com/album/22HeDveFZeqMGGVIXUGfU8" target="_blank" rel="noopener">Spotify</a>
+            <a class="btn alt" href="https://music.apple.com/us/album/bluecayman-ep/6790756377" target="_blank" rel="noopener">Apple Music</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="press">
+      <h2><span class="num">02</span> Press / Sync</h2>
+      <div class="press-box">
+        <p>One-stop rights. Instrumental versions available for every track. PRO-registered. Ready to clear on short timelines.</p>
+        <a class="btn" href="./press/fwourck-sync-onesheet.pdf" target="_blank" rel="noopener">Download one-sheet (PDF)</a>
+      </div>
+    </section>
+
+    <section id="connect">
+      <h2><span class="num">03</span> Connect</h2>
+      <div class="connect-grid">
+        <a href="https://soundcloud.com/fwourck" target="_blank" rel="noopener">SoundCloud</a>
+        <a href="https://instagram.com/fwourck" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.tiktok.com/@fwourck" target="_blank" rel="noopener">TikTok</a>
+        <a href="https://www.youtube.com/@fwourck" target="_blank" rel="noopener">YouTube</a>
+      </div>
+      <p class="email-line">Sync / licensing / press: <a href="mailto:1rd.hargrove@gmail.com">1rd.hargrove@gmail.com</a></p>
+    </section>
+
+    <footer>
+      &copy; fwourck / epiclyclad. All rights reserved.
+    </footer>
+  </div>
+
+</body>
+</html>
